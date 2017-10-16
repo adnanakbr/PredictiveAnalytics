@@ -1,18 +1,10 @@
 __author__ = 'adnan'
-''' Step1: run the zookeeper
-    Step2:run kafka
-'''
-
-
 
 import urllib2
 import xml.etree.ElementTree as ET
 import urllib
 import re
-from kafka import SimpleProducer, KafkaClient
-import avro.schema
 import io, random
-from avro.io import DatumWriter
 import pandas as pd
 import time
 from datetime import datetime
@@ -23,9 +15,6 @@ import datetime
 TrainingWindow = 15
 PredictionWindow = 3
 time_sampling = 300
-
-
-
 
 
 
@@ -116,16 +105,6 @@ def AMWR(df):
     for i in range(3):
         print "Expected traffic speed at {}:{} is {}".format(X_speed[i][0], X_speed[i][1], int(Y_speed[i]))
         print "Expected traffic intensity at {}:{} is {}".format(X_intensity[i][0], X_intensity[i][1], int(Y_intensity[i]))
-
-
-
-
-
-
-
-
-
-
 
 
 
