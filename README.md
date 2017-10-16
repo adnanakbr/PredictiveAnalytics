@@ -12,9 +12,11 @@ AMWR.py:
 1) It runs the AMWR on historical data. It is used to verify the prediction error of the algorithm.
 
 
-comparison_congestion.py
+comparison_congestion.py:
+
 1)This file is used to capture the congestion point in order to compare the performance of AMWR with simple prediction model.
 
 
-sota_models.py
+sota_models.py:
+
 1) it compares the performance of AMWR with other state-of-the-art regression models in terms of Mean Absolute Percentage Error (MAPE).
