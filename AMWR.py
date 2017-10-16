@@ -1,5 +1,7 @@
 __author__ = 'adnan'
 
+'''this files runs AMWR on historical data, need to change 
+the path of main file in input function'''
 
 import numpy as np
 import csv
@@ -15,6 +17,8 @@ from sklearn.neighbors import KernelDensity
 from sklearn.tree import DecisionTreeRegressor
 #from sklearn.utils import check_arrays
 TrainingWindow = 15
+
+#pre-processing function
 def pre_processing(df):
     #code for extracting data for particular time
     hour = df.index.hour
@@ -32,6 +36,7 @@ def pre_processing(df):
 
     return df3
 
+#function to model the prediction error 
 def error_model(data):
     #fitting a normal distribution
 
@@ -74,7 +79,7 @@ def error_model(data):
     plt.show()
 
 
-
+#main function
 if __name__ == "__main__":
 
     #define window sizes
@@ -288,60 +293,6 @@ if __name__ == "__main__":
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#fitting a normal distribution
-#mu, std = norm.fit(data, floc = 0)
-
-# df, mu, std = t.fit(data, floc = 0)
-#
-# mu1, std1 = norm.fit(data, floc=0)
-# print ' T dist parameteres are', a, mu, std
-# print 'Gaussian parameters are', mu1, std1
-#
-# # Fit a exponential distribution to the data:
-# #mu, std = expon.fit(data, floc = 0)
-#
-# plt.figure(3)
-# # Plot the histogram.
-# plt.hist(data, bins=25, normed=True, alpha=0.5)
-#
-# # Plot the PDF.
-# xmin, xmax = plt.xlim()
-# x = np.linspace(xmin, xmax, 100)
-# p1 = norm.pdf(x, loc = mu1, scale = std1)
-# p = t.pdf(x, df, loc = mu, scale = std)
-# kde_data = data[:, np.newaxis]
-# X_plot = np.linspace(xmin, xmax, 1000)[:, np.newaxis]
-#
-# # Gaussian KDE
-# kde = KernelDensity(kernel='gaussian', bandwidth=0.035).fit(kde_data)
-# log_dens = kde.score_samples(X_plot)
-# #plt.plot(X_plot[:, 0], np.exp(log_dens), linewidth = 2)
-#
-# plt.plot(x, p, 'k', linewidth=2, label = 't-distribution')
-# plt.plot(x, p1, 'r', linewidth=2, label = 'Gaussian distribution')
-# title = "Fit results: mu = %.2f,  std = %.2f" % (mu, std)
-# #plt.title(title)
-# plt.xlabel('Normalized Error', fontsize = 16)
-# plt.ylabel('Probability of Error', fontsize = 16)
-# #plt.ylim(0,6)
-# #plt.title('Sensor 1', fontsize = 17)
-# plt.legend()
 
 
 

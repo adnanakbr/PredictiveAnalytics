@@ -1,5 +1,6 @@
 __author__ = 'adnan'
-
+'''this program compares the performance of AMWR with other state-of-the-art 
+prediction methods in terms of Mean Absolute Percentage Error'''
 
 import numpy as np
 import csv

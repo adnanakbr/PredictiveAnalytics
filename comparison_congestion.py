@@ -1,6 +1,8 @@
 __author__ = 'adnan'
 
-
+'''this program compares the performance of AMWR with simple regression model when predicting
+a congestion point'''
+ 
 import numpy as np
 import csv
 from pandas import Series, DataFrame

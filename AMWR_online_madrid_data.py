@@ -1,5 +1,9 @@
 __author__ = 'adnan'
 
+'''this program reads online data from Madrid website, pre-proces it, 
+and applies AMWR to predict next three readings'''
+
+
 import urllib2
 import xml.etree.ElementTree as ET
 import urllib
@@ -11,14 +15,14 @@ from datetime import datetime
 from sklearn.svm import SVR
 import datetime
 
-#parameters constant
-TrainingWindow = 15
-PredictionWindow = 3
-time_sampling = 300
+#constant parameters
+TrainingWindow = 15    #window size is found from historical data
+PredictionWindow = 3   #prediction window/prediction horizon
+time_sampling = 300	#Should be equal to data refreshing time
 
 
 
-
+#function to read data
 def data_traffic_read():
     req = urllib2.Request(url='http://informo.munimadrid.es/informo/tmadrid/pm.xml')
 
@@ -43,7 +47,7 @@ def data_traffic_read():
                 list.append(message)
     return list
 
-
+#function to apply prediction based on svr with rbf kernel
 def pred(df):
     X = []
     Y = []
@@ -82,6 +86,7 @@ def pred(df):
 
     return X_pred, Y_pred
 
+#adaptive movie window regression function
 def AMWR(df):
     #extracting last readings equivalent to window size
 
@@ -107,7 +112,7 @@ def AMWR(df):
         print "Expected traffic intensity at {}:{} is {}".format(X_intensity[i][0], X_intensity[i][1], int(Y_intensity[i]))
 
 
-
+#main function
 if __name__ == '__main__':
 
     total_list = []
@@ -131,6 +136,4 @@ if __name__ == '__main__':
         print "i am sleeping"
         time.sleep(time_sampling)
 
-        #with open('online_data.csv', 'a') as f:
-            #for item in total_list:
-                #f.write("%s \n" % item)
+
